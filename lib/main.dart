@@ -1,9 +1,23 @@
-import 'package:alex_calendar/src/config/app_themes.dart';
-import 'package:alex_calendar/src/ui/screens/home_page.dart';
+// ignore_for_file: depend_on_referenced_packages
+
+import 'package:alex_calendar/src/bloc/navigation_bar/navigation_bar_bloc.dart';
+import 'package:alex_calendar/src/ui/screens/home_page/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent
+  ));
+  runApp(
+    MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => NavigationBarBloc())
+        ],
+        child: const MyApp()
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {
