@@ -11,6 +11,5 @@ class DataEventAddTodo extends DataEvent {
   final Todo todo;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [user, todo];
 }
