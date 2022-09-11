@@ -5,6 +5,7 @@ import 'package:alex_calendar/src/bloc/navigation_bar/navigation_bar_bloc.dart';
 import 'package:alex_calendar/src/constant/app_colors.dart';
 import 'package:alex_calendar/src/constant/app_paths.dart';
 import 'package:alex_calendar/src/constant/app_text_styles.dart';
+import 'package:alex_calendar/src/services/DateTineHandle.dart';
 import 'package:alex_calendar/src/ui/common/widgets/stl/BottomBarItem.dart';
 import 'package:alex_calendar/src/ui/screens/home_page/page/achievements_page.dart';
 import 'package:alex_calendar/src/ui/screens/home_page/page/calendar_month_page.dart';
@@ -27,7 +28,7 @@ class HomePage extends StatelessWidget {
         builder: (context, calendarState) {
           return Scaffold(
             backgroundColor: AppColors.paradiseBeachPrimary10,
-            appBar: buildAppBar(navigationBarState),
+            appBar: buildAppBar(navigationBarState, calendarState),
             body: SafeArea(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -95,7 +96,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  AppBar buildAppBar(NavigationBarState navigationBarState) {
+  AppBar buildAppBar(NavigationBarState navigationBarState, CalendarState calendarState) {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
@@ -115,9 +116,9 @@ class HomePage extends StatelessWidget {
       ),
       title: navigationBarState.currentId == 0
           ? Row(
-              children: const [
-                Text('Jul, 2022', style: AppTextStyles.calendarTitle),
-                Icon(
+              children: [
+                Text(DateTimeHandle.toAppBarTitle(calendarState.focusDate), style: AppTextStyles.calendarTitle),
+                const Icon(
                   Icons.keyboard_arrow_down_sharp,
                   color: Colors.black,
                 )

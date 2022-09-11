@@ -9,9 +9,6 @@ class CalendarMonthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery
-        .of(context)
-        .size;
     return BlocBuilder<CalendarBloc, CalendarState>(
       builder: (context, calendarState) {
         return SingleChildScrollView(
@@ -19,11 +16,14 @@ class CalendarMonthPage extends StatelessWidget {
             children: [
               TableCalendar(
                 onDaySelected: (date, focusDate) {
-                  BlocProvider.of<CalendarBloc>(context).add(CalendarEventChangeDate(dateTime: date));
+                  BlocProvider.of<CalendarBloc>(context).add(CalendarEventChangeDate(currentDate: date, focusDate: focusDate));
+                },
+                onPageChanged: (focusDate) {
+                  BlocProvider.of<CalendarBloc>(context).add(CalendarEventChangeDate(currentDate: calendarState.currentDate, focusDate: focusDate));
                 },
                 calendarStyle: const CalendarStyle(canMarkersOverflow: true),
-                currentDay: calendarState.currentDay,
-                focusedDay: calendarState.currentDay,
+                currentDay: calendarState.currentDate,
+                focusedDay: calendarState.currentDate,
                 firstDay: DateTime.utc(1990, 1, 1),
                 lastDay: DateTime.utc(2042, 28, 4),
                 headerVisible: false,

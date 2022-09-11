@@ -5,10 +5,19 @@ abstract class CalendarEvent extends Equatable {
 }
 
 class CalendarEventChangeDate extends CalendarEvent {
-  final DateTime dateTime;
-
-  const CalendarEventChangeDate({required this.dateTime});
+  final DateTime currentDate;
+  final DateTime focusDate;
+  const CalendarEventChangeDate({required this.currentDate, required this.focusDate});
 
   @override
-  List<Object?> get props => [dateTime];
+  List<Object?> get props => [currentDate, focusDate];
+}
+
+class CalendarEventChangePage extends CalendarEvent {
+  final DateTime focusDate;
+  final DateTime currentDate;
+  const CalendarEventChangePage({required this.focusDate, required this.currentDate});
+
+  @override
+  List<Object?> get props => [focusDate, currentDate];
 }
