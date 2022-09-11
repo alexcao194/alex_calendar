@@ -1,11 +1,17 @@
 part of 'calendar_bloc.dart';
 
 abstract class CalendarState extends Equatable {
-  const CalendarState();
+  final DateTime currentDay;
+  const CalendarState({required this.currentDay});
+
+  @override
+  List<Object> get props => [currentDay];
 }
 
 class CalendarInitial extends CalendarState {
+  const CalendarInitial({required super.currentDay});
+}
 
-  @override
-  List<Object> get props => [];
+class CalendarStateDateChanged extends CalendarState {
+  const CalendarStateDateChanged({required super.currentDay});
 }

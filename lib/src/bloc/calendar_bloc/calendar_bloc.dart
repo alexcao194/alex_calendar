@@ -9,9 +9,12 @@ part 'calendar_event.dart';
 part 'calendar_state.dart';
 
 class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
-  CalendarBloc() : super(CalendarInitial()) {
-    on<CalendarEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+  CalendarBloc() : super(CalendarInitial(currentDay: DateTime.now())) {
+    on<CalendarEventChangeDate>(_onChangDate);
+  }
+
+  FutureOr<void> _onChangDate(CalendarEventChangeDate event, Emitter<CalendarState> emit) {
+    print(event.dateTime);
+    emit(CalendarStateDateChanged(currentDay: event.dateTime));
   }
 }

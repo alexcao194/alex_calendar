@@ -1,5 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages
 
+import 'package:alex_calendar/src/bloc/calendar_bloc/calendar_bloc.dart';
 import 'package:alex_calendar/src/bloc/navigation_bar/navigation_bar_bloc.dart';
 import 'package:alex_calendar/src/constant/app_colors.dart';
 import 'package:alex_calendar/src/constant/app_paths.dart';
@@ -22,36 +23,41 @@ class HomePage extends StatelessWidget {
     PageController pageController = PageController();
     return BlocBuilder<NavigationBarBloc, NavigationBarState>(
         builder: (context, navigationBarState) {
-      return Scaffold(
-        backgroundColor: AppColors.paradiseBeachPrimary10,
-        appBar: buildAppBar(navigationBarState),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: PageView(
-              controller: pageController,
-              onPageChanged: (id) {
-                BlocProvider.of<NavigationBarBloc>(context)
-                    .add(NavigationBarEventOnChangePageView(id: id));
-              },
-              children: const [
-                CalendarMonthPage(),
-                CalendarWeekPage(),
-                AchievementsPage(),
-                SettingsPage()
-              ],
+      return BlocBuilder<CalendarBloc, CalendarState>(
+        builder: (context, calendarState) {
+          return Scaffold(
+            backgroundColor: AppColors.paradiseBeachPrimary10,
+            appBar: buildAppBar(navigationBarState),
+            body: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: PageView(
+                  controller: pageController,
+                  onPageChanged: (id) {
+                    BlocProvider.of<NavigationBarBloc>(context)
+                        .add(NavigationBarEventOnChangePageView(id: id));
+                  },
+                  children: const [
+                    CalendarMonthPage(),
+                    CalendarWeekPage(),
+                    AchievementsPage(),
+                    SettingsPage()
+                  ],
+                ),
+              ),
             ),
-          ),
-        ),
-        bottomNavigationBar: buildBottomAppBar(pageController),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: FloatingActionButton(
-              backgroundColor: AppColors.paradiseBeachPrimary50,
-              onPressed: () {},
-              child: const Icon(Icons.add)),
-        ),
+            bottomNavigationBar: buildBottomAppBar(pageController),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerDocked,
+            floatingActionButton: Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: FloatingActionButton(
+                  backgroundColor: AppColors.paradiseBeachPrimary50,
+                  onPressed: () {},
+                  child: const Icon(Icons.add)),
+            ),
+          );
+        },
       );
     });
   }
@@ -73,7 +79,7 @@ class HomePage extends StatelessWidget {
               label: 'Week',
               id: 1,
               pageController: pageController),
-          const Expanded(child: SizedBox()),
+          const SizedBox(width: 50),
           BottomBarItem(
               asset: AppPath.chair,
               label: 'Achievement',
