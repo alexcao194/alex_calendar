@@ -5,7 +5,7 @@ import 'package:alex_calendar/src/bloc/navigation_bar/navigation_bar_bloc.dart';
 import 'package:alex_calendar/src/constant/app_colors.dart';
 import 'package:alex_calendar/src/constant/app_paths.dart';
 import 'package:alex_calendar/src/constant/app_text_styles.dart';
-import 'package:alex_calendar/src/services/DateTineHandle.dart';
+import 'package:alex_calendar/src/services/DateTimeHandle.dart';
 import 'package:alex_calendar/src/ui/common/widgets/stl/BottomBarItem.dart';
 import 'package:alex_calendar/src/ui/screens/home_page/page/achievements_page.dart';
 import 'package:alex_calendar/src/ui/screens/home_page/page/calendar_month_page.dart';

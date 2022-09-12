@@ -55,6 +55,7 @@ dev_dependencies:
   firebase_core: ^1.22.0
   firebase_auth: 3.8.0
   alex_core: ^0.0.1
+  shared_preferences: ^2.0.15
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
