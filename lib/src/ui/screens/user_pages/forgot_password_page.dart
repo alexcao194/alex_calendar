@@ -2,6 +2,7 @@
 
 import 'package:alex_calendar/src/bloc/user_bloc/user_bloc.dart';
 import 'package:alex_calendar/src/constant/app_colors.dart';
+import 'package:alex_calendar/src/constant/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:alex_core/alex_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,47 +29,28 @@ class ForgotPasswordPage extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 34,
                               fontWeight: FontWeight.w900,
-                              color: AppColors.paradiseBeachSecondary50,
+                              color: AppColors.paradiseBeachPrimary50,
                             )
                         ),
                         const SizedBox(height: 4.0),
-                        Expanded(child: Text('Quên mật khẩu', style: TextStyle(fontSize: 30))), // Handle text style
+                        const Expanded(child: Text('Quên mật khẩu', style: TextStyle(fontSize: 30))),
                         Container(height: 64, color: Colors.transparent),
-                        InputText(label: 'Email', controller: emailController, obscureText: false),
+                        InputText(height: 50, label: 'Email', controller: emailController, obscureText: false),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               const SizedBox(),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(5.0),
-                                child: Material(
-                                  color:Colors.transparent,
-                                  child: InkWell(
-                                      splashColor: AppColors.paradiseBeachPrimary50,
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                          const BorderRadius.all(Radius.circular(5.0)),
-                                          border: Border.all(color: AppColors.paradiseBeachPrimary50, width: 1.5),
-                                        ),
-                                        height: 40.0,
-                                        width: 100.0,
-                                        child: Center(
-                                            child: Text('Lấy mật khẩu',
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w500,
-                                                  color: AppColors.paradiseBeachPrimary50,
-                                                )
-                                            )
-                                        ),
-                                      ),
-                                      onTap: () {
-                                        BlocProvider.of<UserBloc>(context).add(UserEventGetPassword(email: emailController.value.text));
-                                      }
-                                  ),
-                                ),
+                              InkWellButton(
+                                height: 40,
+                                width: 120,
+                                radius: 5.0,
+                                primaryColor: AppColors.paradiseBeachPrimary50,
+                                onTap: () {
+                                  BlocProvider.of<UserBloc>(context).add(UserEventGetPassword(email: emailController.value.text));
+                                },
+                                child: Text('Lấy mật khẩu', style: AppTextStyles.inkWellButtonStyle),
                               )
                             ],
                           ),

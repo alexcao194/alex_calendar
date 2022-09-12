@@ -5,11 +5,10 @@ abstract class UserEvent extends Equatable {
 }
 
 class UserEventSignUp extends UserEvent {
-  final BuildContext context;
   final String email;
   final String password;
   final String rePassword;
-  const UserEventSignUp({required this.email, required this.password, required this.rePassword, required this.context});
+  const UserEventSignUp({required this.email, required this.password, required this.rePassword});
 
   @override
   List<Object> get props => [email, password, rePassword];
@@ -27,13 +26,12 @@ class UserEventRegistry extends UserEvent {
 }
 
 class UserEventLogin extends UserEvent {
-  final BuildContext context;
   final String email;
   final String password;
-  const UserEventLogin({required this.email, required this.password, required this.context});
+  const UserEventLogin({required this.email, required this.password});
 
   @override
-  List<Object> get props => [email, password, context];
+  List<Object> get props => [email, password];
 }
 
 class UserEventGetPassword extends UserEvent {

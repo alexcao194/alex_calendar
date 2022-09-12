@@ -7,7 +7,7 @@ packages:
       name: alex_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.4"
+    version: "0.0.5"
   async:
     dependency: transitive
     description:

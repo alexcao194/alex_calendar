@@ -1,8 +1,11 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:alex_calendar/src/bloc/calendar_bloc/calendar_bloc.dart';
-import 'package:alex_calendar/src/bloc/navigation_bar/navigation_bar_bloc.dart';
-import 'package:alex_calendar/src/ui/screens/home_page/home_page.dart';
+import 'package:alex_calendar/src/bloc/data_bloc/data_bloc.dart';
+import 'package:alex_calendar/src/bloc/date_picker_bloc/date_picker_bloc.dart';
+import 'package:alex_calendar/src/bloc/navigation_bar_bloc/navigation_bar_bloc.dart';
+import 'package:alex_calendar/src/bloc/user_bloc/user_bloc.dart';
+import 'package:alex_calendar/src/services/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +24,10 @@ void main() async {
     MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => NavigationBarBloc()),
-          BlocProvider(create: (context) => CalendarBloc())
+          BlocProvider(create: (context) => CalendarBloc()),
+          BlocProvider(create: (context) => UserBloc()),
+          BlocProvider(create: (context) => DataBloc()),
+          BlocProvider(create: (context) => DatePickerBloc())
         ],
         child: const MyApp()
     )
@@ -37,10 +43,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-
-      ),
-      home: const HomePage(),
+      onGenerateRoute: AppRouter.generateRoute,
+      initialRoute: AppRoutes.splashPage,
+      navigatorKey: AppRouter.navigatorKey,
     );
   }
 }

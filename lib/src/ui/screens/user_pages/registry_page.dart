@@ -4,12 +4,13 @@ import 'package:alex_calendar/src/bloc/date_picker_bloc/date_picker_bloc.dart';
 import 'package:alex_calendar/src/bloc/user_bloc/user_bloc.dart';
 import 'package:alex_calendar/src/constant/app_colors.dart';
 import 'package:alex_calendar/src/constant/app_strings.dart';
+import 'package:alex_calendar/src/constant/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:alex_core/alex_core.dart';
 
-class RegistryInformation extends StatelessWidget {
-  RegistryInformation({Key? key}) : super(key: key);
+class RegistryPage extends StatelessWidget {
+  RegistryPage({Key? key}) : super(key: key);
 
   final displayNameController = TextEditingController();
   final nickNameController = TextEditingController();
@@ -37,7 +38,7 @@ class RegistryInformation extends StatelessWidget {
                                   )
                               ),
                               const SizedBox(height: 4.0),
-                              Expanded(child: Text('Thông tin', style: TextStyle(fontSize: 30))), // TODO: handle textStyle
+                              const Expanded(child: Text('Thông tin', style: TextStyle(fontSize: 30))),
                               SizedBox(
                                 height: 100,
                                 width: 100,
@@ -54,14 +55,16 @@ class RegistryInformation extends StatelessWidget {
                                 ),
                               ),
                               Container(height: 64, color: Colors.transparent),
-                              InputText(label: 'Họ và tên', controller: displayNameController),
+                              InputText(height: 50, label: 'Họ và tên', controller: displayNameController),
                               const SizedBox(height: 8.0),
-                              InputText(label: 'Nickname', controller: nickNameController),
+                              InputText(height: 50,label: 'Nickname', controller: nickNameController),
+                              const SizedBox(height: 8.0),
                               GestureDetector(
                                 onTap: () {
                                   BlocProvider.of<DatePickerBloc>(context).add(DatePickerEventOnPick(currentTime: dateState.time, context: context));
                                 },
                                 child: InputText(
+                                    height: 50,
                                     label:  simpleDateFormat(dateState.time),
                                     enable: false
                                 ),
@@ -73,6 +76,9 @@ class RegistryInformation extends StatelessWidget {
                                   children: [
                                     const SizedBox(),
                                     InkWellButton(
+                                      height: 40,
+                                      width: 80,
+                                      primaryColor: AppColors.paradiseBeachPrimary50,
                                       onTap: () {
                                         BlocProvider.of<UserBloc>(context).add(
                                             UserEventRegistry(
@@ -84,6 +90,7 @@ class RegistryInformation extends StatelessWidget {
                                         );
                                       },
                                       radius: 5.0,
+                                      child: Text('Đăng kí', style: AppTextStyles.inkWellButtonStyle),
                                     )
                                   ],
                                 ),

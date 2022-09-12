@@ -1,5 +1,5 @@
 // ignore_for_file: depend_on_referenced_packages
-import 'package:alex_calendar/src/bloc/navigation_bar/navigation_bar_bloc.dart';
+import 'package:alex_calendar/src/bloc/navigation_bar_bloc/navigation_bar_bloc.dart';
 import 'package:alex_calendar/src/constant/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
