@@ -1,6 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:alex_calendar/src/bloc/calendar_bloc/calendar_bloc.dart';
+import 'package:alex_calendar/src/config/config.dart';
 import 'package:alex_calendar/src/ui/common/widgets/stl/todo_card.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
@@ -26,8 +27,8 @@ class CalendarMonthPage extends StatelessWidget {
                 calendarStyle: const CalendarStyle(canMarkersOverflow: true),
                 currentDay: calendarState.currentDate,
                 focusedDay: calendarState.focusDate,
-                firstDay: DateTime.utc(1990, 1, 1),
-                lastDay: DateTime.utc(2042, 28, 4),
+                firstDay: Config.startDate,
+                lastDay: Config.endDate,
                 headerVisible: false,
               ),
               const TodoCard(),

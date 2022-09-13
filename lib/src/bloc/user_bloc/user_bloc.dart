@@ -57,21 +57,17 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     } else {
       emit(const UserStateLoading());
       User? user = FirebaseAuth.instance.currentUser;
-      user!.updateDisplayName(event.displayName);
-      user.updatePhotoURL(event.avatarURL);
-      FirebaseFirestore.instance.collection('users').doc(user.email).set({
-        'nick-name': event.nickName,
-        'display-name': event.displayName,
-        'birthday': event.birthday
-      });
-      if (!user.emailVerified) {
-        try {
-          await user.sendEmailVerification().then((value) => emit(
-              const UserStateRegistrySuccessful(
-                  status: AppStrings.registrySuccessful)));
-        } on FirebaseAuthException catch (e) {
-          print(e);
-        }
+      if(user!.displayName == null) {
+        user.updateDisplayName(event.displayName);
+        user.updatePhotoURL(event.avatarURL);
+        FirebaseFirestore.instance.collection('users').doc(user.email).set({
+          'nick-name': event.nickName,
+          'display-name': event.displayName,
+          'birthday': event.birthday
+        });
+        await user.sendEmailVerification().then((value) => emit(const UserStateRegistrySuccessful(status: AppStrings.registrySuccessful)));
+      } else {
+        emit(const UserStateRegistryFail(error: AppStrings.emailRegistered));
       }
     }
   }

@@ -21,3 +21,19 @@ class CalendarEventChangePage extends CalendarEvent {
   @override
   List<Object?> get props => [focusDate, currentDate];
 }
+
+class CalendarEventOnPickBirthday extends CalendarEvent {
+  final DateTime currentTime;
+  const CalendarEventOnPickBirthday({required this.currentTime});
+
+  @override
+  List<Object> get props => [currentTime];
+}
+
+class CalendarEventOnPickDate extends CalendarEvent {
+  final DateTime currentTime;
+  const CalendarEventOnPickDate({required this.currentTime});
+
+  @override
+  List<Object> get props => [currentTime];
+}

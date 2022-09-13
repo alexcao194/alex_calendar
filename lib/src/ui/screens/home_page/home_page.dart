@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
         builder: (context, calendarState) {
           return Scaffold(
             backgroundColor: AppColors.paradiseBeachPrimary10,
-            appBar: buildAppBar(navigationBarState, calendarState),
+            appBar: buildAppBar(navigationBarState, calendarState, context),
             body: SafeArea(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -96,7 +96,8 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  AppBar buildAppBar(NavigationBarState navigationBarState, CalendarState calendarState) {
+  AppBar buildAppBar(
+      NavigationBarState navigationBarState, CalendarState calendarState, BuildContext context) {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
@@ -117,7 +118,13 @@ class HomePage extends StatelessWidget {
       title: navigationBarState.currentId == 0
           ? Row(
               children: [
-                Text(DateTimeHandle.toAppBarTitle(calendarState.focusDate), style: AppTextStyles.calendarTitle),
+                TextButton(
+                    onPressed: () {
+                      BlocProvider.of<CalendarBloc>(context).add(CalendarEventOnPickDate(currentTime: calendarState.currentDate));
+                    },
+                    child: Text(
+                        DateTimeHandle.toAppBarTitle(calendarState.focusDate),
+                        style: AppTextStyles.calendarTitle)),
                 const Icon(
                   Icons.keyboard_arrow_down_sharp,
                   color: Colors.black,

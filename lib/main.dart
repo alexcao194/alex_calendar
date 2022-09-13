@@ -2,7 +2,6 @@
 
 import 'package:alex_calendar/src/bloc/calendar_bloc/calendar_bloc.dart';
 import 'package:alex_calendar/src/bloc/data_bloc/data_bloc.dart';
-import 'package:alex_calendar/src/bloc/date_picker_bloc/date_picker_bloc.dart';
 import 'package:alex_calendar/src/bloc/navigation_bar_bloc/navigation_bar_bloc.dart';
 import 'package:alex_calendar/src/bloc/user_bloc/user_bloc.dart';
 import 'package:alex_calendar/src/services/router.dart';
@@ -11,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -20,6 +20,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform
   );
+  await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
   runApp(
     MultiBlocProvider(
         providers: [
@@ -27,7 +28,6 @@ void main() async {
           BlocProvider(create: (context) => CalendarBloc()),
           BlocProvider(create: (context) => UserBloc()),
           BlocProvider(create: (context) => DataBloc()),
-          BlocProvider(create: (context) => DatePickerBloc())
         ],
         child: const MyApp()
     )

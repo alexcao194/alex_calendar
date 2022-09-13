@@ -20,3 +20,7 @@ class CalendarStateDateChanged extends CalendarState {
 class CalendarStatePageChanged extends CalendarState {
   const CalendarStatePageChanged({required super.currentDate, required super.focusDate});
 }
+
+class CalendarStatePickBirthdayDone extends CalendarState {
+  const CalendarStatePickBirthdayDone({required super.focusDate, required super.currentDate});
+}

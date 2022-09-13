@@ -11,5 +11,6 @@ class AppStrings {
   static const String emptyInformation = 'Thông tin người dùng không được để trống';
   static const String emailSigned = 'Email đã được đăng kí';
   static const String getPasswordSuccessful = 'Kiểm tra email để lấy lại mật khẩu';
+  static const String emailRegistered = 'Thông tin người dùng này đã được đăng kí';
   static const String defaultAvatar = 'https://cdn.discordapp.com/attachments/960780341952544798/998191476775321610/6QRk7pk.jpg';
 }

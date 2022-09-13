@@ -1,6 +1,6 @@
 // ignore_for_file: depend_on_referenced_packages
 
-import 'package:alex_calendar/src/bloc/date_picker_bloc/date_picker_bloc.dart';
+import 'package:alex_calendar/src/bloc/calendar_bloc/calendar_bloc.dart';
 import 'package:alex_calendar/src/bloc/user_bloc/user_bloc.dart';
 import 'package:alex_calendar/src/constant/app_colors.dart';
 import 'package:alex_calendar/src/constant/app_strings.dart';
@@ -19,8 +19,8 @@ class RegistryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<UserBloc, UserState>(
         builder: (context, userState) {
-          return BlocBuilder<DatePickerBloc, DatePickerState>(
-              builder: (context, dateState) {
+          return BlocBuilder<CalendarBloc, CalendarState>(
+              builder: (context, calendarState) {
                 return Scaffold(
                   body: SafeArea(
                     child: Padding(
@@ -61,11 +61,11 @@ class RegistryPage extends StatelessWidget {
                               const SizedBox(height: 8.0),
                               GestureDetector(
                                 onTap: () {
-                                  BlocProvider.of<DatePickerBloc>(context).add(DatePickerEventOnPick(currentTime: dateState.time, context: context));
+                                  BlocProvider.of<CalendarBloc>(context).add(CalendarEventOnPickBirthday(currentTime: DateTime.now()));
                                 },
                                 child: InputText(
                                     height: 50,
-                                    label:  simpleDateFormat(dateState.time),
+                                    label:  simpleDateFormat(calendarState.currentDate),
                                     enable: false
                                 ),
                               ),
@@ -84,7 +84,7 @@ class RegistryPage extends StatelessWidget {
                                             UserEventRegistry(
                                                 displayName: displayNameController.value.text,
                                                 avatarURL: AppStrings.defaultAvatar,
-                                                birthday: simpleDateFormat(dateState.time),
+                                                birthday: simpleDateFormat(calendarState.currentDate),
                                                 nickName: nickNameController.value.text
                                             )
                                         );
