@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class DateTimeHandle {
   static Map<int, String> convert = {
     1:'Jan',
@@ -19,7 +21,10 @@ class DateTimeHandle {
   }
 
   static String simpleDateFormat(DateTime time) {
-    final localTime = time.toLocal();
-    return '${localTime.day}/${localTime.month}/${localTime.year}';
+    return '${time.day > 10 ? time.day.toString() : '0${time.day}'}/${time.month > 10 ? time.month.toString() : '0${time.month}'}/${time.year}';
+  }
+
+  static String simpleTimeFormat(TimeOfDay time) {
+    return '${time.hour > 10 ? time.hour.toString() : '0${time.hour}'}:${time.minute > 10 ? time.minute.toString() : '0${time.minute}'}';
   }
 }

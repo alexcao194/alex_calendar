@@ -47,7 +47,7 @@ class CalendarEventOnChangeAddTodoDate extends CalendarEvent {
 }
 
 class CalendarEventOnPickTimeAddTodoPage extends CalendarEvent {
-  final DateTime currentTime;
+  final TimeOfDay currentTime;
   const CalendarEventOnPickTimeAddTodoPage({required this.currentTime});
 
   @override

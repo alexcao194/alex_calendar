@@ -42,7 +42,7 @@ class AddTodoPage extends StatelessWidget {
           ),
           body: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -99,14 +99,20 @@ class AddTodoPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4.0),
-                  const AddTodoItem(
+                  AddTodoItem(
                     child: SizedBox(
                       height: 35.0,
                       child: Center(
-                        child: TextField(
-                          decoration: InputDecoration.collapsed(
-                              hintText: '16:00 - 18:00'),
-                          enabled: false,
+                        child: GestureDetector(
+                          onTap: () {
+                            BlocProvider.of<CalendarBloc>(context).add(CalendarEventOnPickTimeAddTodoPage(currentTime: TimeOfDay.now()));
+                          },
+                          child: TextField(
+                            decoration: InputDecoration.collapsed(
+                                hintText: calendarState is CalendarStateChangedAddTodoTime ? ('${DateTimeHandle.simpleTimeFormat(calendarState.startTime)} - ${DateTimeHandle.simpleTimeFormat(calendarState.endTime)}') : 'Chọn một khoảng thời gian'
+                            ),
+                            enabled: false,
+                          ),
                         ),
                       ),
                     ),

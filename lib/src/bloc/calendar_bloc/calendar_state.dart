@@ -28,3 +28,13 @@ class CalendarStatePickBirthdayDone extends CalendarState {
 class CalendarStateChangedAddTodoDate extends CalendarState {
   const CalendarStateChangedAddTodoDate({required super.focusDate, required super.currentDate});
 }
+
+class CalendarStateChangedAddTodoTime extends CalendarState {
+  const CalendarStateChangedAddTodoTime({required super.focusDate, required super.currentDate, required this.startTime, required this.endTime});
+
+  final TimeOfDay startTime;
+  final TimeOfDay endTime;
+
+  @override
+  List<Object> get props =>[startTime, endTime, focusDate, currentDate];
+}
