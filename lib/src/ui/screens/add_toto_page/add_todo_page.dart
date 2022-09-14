@@ -35,8 +35,7 @@ class AddTodoPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AddTodoItem(
-                  child: Text('Title', style: AppTextStyles.titleAddTodoItem)),
+              Text('Title', style: AppTextStyles.titleAddTodoItem),
               const SizedBox(height: 8.0),
               const AddTodoItem(
                   child: TextField(
@@ -44,9 +43,8 @@ class AddTodoPage extends StatelessWidget {
                     InputDecoration.collapsed(hintText: 'Write title here...'),
               )),
               const SizedBox(height: 32.0),
-              AddTodoItem(
-                  child: Text('Description',
-                      style: AppTextStyles.titleAddTodoItem)),
+              Text('Description',
+                  style: AppTextStyles.titleAddTodoItem),
               const SizedBox(height: 8.0),
               const AddTodoItem(
                   child: TextField(
@@ -55,7 +53,49 @@ class AddTodoPage extends StatelessWidget {
                 decoration: InputDecoration.collapsed(
                     hintText: 'Write something about this todo'),
               )),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 32.0),
+              Text('Date & Time',
+                  style: AppTextStyles.titleAddTodoItem),
+              const SizedBox(height: 8.0),
+              const AddTodoItem(
+                child: SizedBox(
+                  height: 35.0,
+                  child: Center(
+                    child: TextField(
+                      decoration:
+                          InputDecoration.collapsed(hintText: '19/04/2003'),
+                      enabled: false,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 4.0),
+              const AddTodoItem(
+                child: SizedBox(
+                  height: 35.0,
+                  child: Center(
+                    child: TextField(
+                      decoration:
+                          InputDecoration.collapsed(hintText: '16:00 - 18:00'),
+                      enabled: false,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 32.0),
+              Text('Location', style: AppTextStyles.titleAddTodoItem),
+              const SizedBox(height: 8.0),
+              const AddTodoItem(
+                  child: SizedBox(
+                height: 35.0,
+                child: Center(
+                  child: TextField(
+                    decoration:
+                        InputDecoration.collapsed(hintText: 'Todo at ...'),
+                  ),
+                ),
+              )),
+              const SizedBox(height: 32.0),
               Wrap(
                 alignment: WrapAlignment.spaceBetween,
                 spacing: 8.0,
@@ -65,7 +105,7 @@ class AddTodoPage extends StatelessWidget {
                   ChipRole(label: 'Learning', isActive: true),
                   ChipRole(label: 'Playing', isActive: false),
                 ],
-              )
+              ),
             ],
           ),
         ),
