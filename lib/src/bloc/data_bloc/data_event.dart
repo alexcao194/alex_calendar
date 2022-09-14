@@ -28,12 +28,4 @@ class DataEventRemoveTodo extends DataEvent {
   List<Object?> get props => [user, todo];
 }
 
-class DataEventCallDialog extends DataEvent {
-  const DataEventCallDialog(this.user, this.date);
-
-  final User? user;
-  final DateTime date;
-  @override
-  List<Object?> get props => [];
-}
 

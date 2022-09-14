@@ -1,19 +1,17 @@
 part of 'chip_bloc.dart';
 
 abstract class ChipState extends Equatable {
-  final int id;
-  const ChipState({required this.id});
+  final Roles role;
+  const ChipState({required this.role});
+
+  @override
+  List<Object?> get props => [role];
 }
 
 class ChipInitial extends ChipState {
-  const ChipInitial({required super.id});
-  @override
-  List<Object> get props => [id];
+  const ChipInitial({required super.role});
 }
 
 class ChipStateClicked extends ChipState {
-  const ChipStateClicked({required super.id});
-
-  @override
-  List<Object?> get props => [id];
+  const ChipStateClicked({required super.role});
 }

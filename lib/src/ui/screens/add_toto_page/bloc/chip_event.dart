@@ -5,10 +5,10 @@ abstract class ChipEvent extends Equatable {
 }
 
 class ChipEventOnClick extends ChipEvent {
-  const ChipEventOnClick({required this.id});
+  const ChipEventOnClick({required this.role});
 
-  final int id;
+  final Roles role;
 
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [role];
 }

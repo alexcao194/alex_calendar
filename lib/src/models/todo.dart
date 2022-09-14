@@ -1,3 +1,9 @@
+enum Roles {
+  working,
+  learning,
+  playing
+}
+
 class Todo {
   const Todo(
       {required this.role,
@@ -7,8 +13,8 @@ class Todo {
       required this.location,
       required this.scheduleTime});
 
-  final DateTime date;
-  final String role;
+  final String date;
+  final Roles role;
   final String description;
   final String title;
   final String scheduleTime;
