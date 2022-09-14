@@ -5,6 +5,7 @@ import 'package:alex_calendar/src/bloc/data_bloc/data_bloc.dart';
 import 'package:alex_calendar/src/bloc/navigation_bar_bloc/navigation_bar_bloc.dart';
 import 'package:alex_calendar/src/bloc/user_bloc/user_bloc.dart';
 import 'package:alex_calendar/src/services/router.dart';
+import 'package:alex_calendar/src/ui/screens/add_toto_page/bloc/chip_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,6 +29,7 @@ void main() async {
           BlocProvider(create: (context) => CalendarBloc()),
           BlocProvider(create: (context) => UserBloc()),
           BlocProvider(create: (context) => DataBloc()),
+          BlocProvider(create: (context) => ChipBloc())
         ],
         child: const MyApp()
     )
