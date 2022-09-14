@@ -17,18 +17,33 @@ class AppTextStyles {
       fontSize: 14,
       fontWeight: FontWeight.w600);
   static TextStyle descriptionCard =
-      TextStyle(color: AppColors.paradiseBeachTertiary80, fontSize: 12);
+      TextStyle(color: AppColors.paradiseBeachTertiary80,
+          fontSize: 12);
+
   static TextStyle header = TextStyle(
     fontSize: 34,
     fontWeight: FontWeight.w900,
     color: AppColors.paradiseBeachPrimary50,
   );
   static TextStyle inkWellButtonStyle = TextStyle(
-    color: AppColors.paradiseBeachPrimary50,
-    fontWeight: FontWeight.w600
-  );
+      color: AppColors.paradiseBeachPrimary50,
+      fontWeight: FontWeight.w600);
   static TextStyle forgotPassword = TextStyle(
       color: AppColors.paradiseBeachPrimary50,
-      decoration: TextDecoration.underline
+      decoration: TextDecoration.underline);
+
+  static TextStyle scheduleAndPlace = TextStyle(
+      color: AppColors.paradiseBeachTertiary30,
+      fontSize: 14,
+      fontWeight: FontWeight.w600);
+
+  static TextStyle titleAddTodoPage = TextStyle(
+    color: AppColors.paradiseBeachTertiary50,
+  );
+
+  static TextStyle titleAddTodoItem = TextStyle(
+    fontSize: 16.0,
+    color: AppColors.paradiseBeachTertiary50,
+    fontWeight: FontWeight.w500
   );
 }

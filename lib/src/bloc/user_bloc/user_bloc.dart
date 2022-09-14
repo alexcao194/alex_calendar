@@ -33,7 +33,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
             .then((value) {
           emit(const UserStateSignUpSuccessful());
           AppRouter.navigatorKey.currentState
-              ?.pushReplacementNamed(AppRoutes.registryPage);
+              ?.pushReplacementNamed(AppRoutes.registry);
         });
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
@@ -83,7 +83,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         if (value.user!.emailVerified) {
           emit(UserStateLoginSuccessful(user: value.user!));
           AppRouter.navigatorKey.currentState
-              ?.pushReplacementNamed(AppRoutes.homePage);
+              ?.pushReplacementNamed(AppRoutes.home);
         } else {
           emit(const UserStateLoginFail(error: AppStrings.emailUnverified));
         }

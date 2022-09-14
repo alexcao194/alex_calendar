@@ -45,36 +45,20 @@ class TodoCard extends StatelessWidget {
                   children: [
                     Center(child: Text('Có tiêu đề thì đặt không thì thôi', style: AppTextStyles.titleCard)),
                     const SizedBox(height: 4.0),
-                    Text('có mô tả thì viết không thì thôi', style: AppTextStyles.descriptionCard),
+                    Text('Có mô tả thì viết không ông thì thôi Có mô tả thì viết không ông thì thôi Có mô tả thì viết không ông thì thôi Có mô tả thì viết không ông thì thôi', style: AppTextStyles.descriptionCard),
                     const SizedBox(height: 4.0),
-                    SizedBox(
-                      height: (size.width > size.height ? size.height : size.width) * 0.2,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          // Image size base on width or height of screen that is smaller
-                          SizedBox(
-                              height: (size.width > size.height ? size.height : size.width) * 0.2,
-                              width: (size.width > size.height ? size.height : size.width) * 0.2,
-                              child: Image.network(
-                                  'https://cdn.discordapp.com/attachments/960780341952544798/1013253044009455666/Untitled.png', fit: BoxFit.cover)),
-                          SizedBox(
-                              height: (size.width > size.height ? size.height : size.width) * 0.2,
-                              width: (size.width > size.height ? size.height : size.width) * 0.2,
-                              child: Image.network(
-                                  'https://cdn.discordapp.com/attachments/960780341952544798/1013253044009455666/Untitled.png', fit: BoxFit.cover)),
-                          SizedBox(
-                              height: (size.width > size.height ? size.height : size.width) * 0.2,
-                              width: (size.width > size.height ? size.height : size.width) * 0.2,
-                              child: Image.network(
-                                  'https://cdn.discordapp.com/attachments/960780341952544798/1013253044009455666/Untitled.png', fit: BoxFit.cover)),
-                          SizedBox(
-                              height: (size.width > size.height ? size.height : size.width) * 0.2,
-                              width: (size.width > size.height ? size.height : size.width) * 0.2,
-                              child: Image.network(
-                                  'https://cdn.discordapp.com/attachments/960780341952544798/1013253044009455666/Untitled.png', fit: BoxFit.cover))
-                        ],
-                      ),
+                    Row(
+                      children: [
+                        Expanded(child: Center(child: Text('16:00 - 18:00', style: AppTextStyles.scheduleAndPlace))),
+                        Card(
+                          elevation: 1.0,
+                          child: SizedBox(
+                            height: size.height * 0.02,
+                            width: 0.1,
+                          ),
+                        ),
+                        Expanded(child: Center(child: Text('Hà Đông', style: AppTextStyles.scheduleAndPlace)))
+                      ],
                     )
                   ],
                 ),

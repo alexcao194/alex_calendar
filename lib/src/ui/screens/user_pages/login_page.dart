@@ -60,7 +60,7 @@ class LoginPage extends StatelessWidget {
                             GestureDetector(
                               onTap: () {
                                 AppRouter.navigatorKey.currentState
-                                    ?.pushNamed(AppRoutes.forgotPasswordPage);
+                                    ?.pushNamed(AppRoutes.forgotPassword);
                               },
                               child: Text('Quên mật khẩu',
                                   style: AppTextStyles.forgotPassword),

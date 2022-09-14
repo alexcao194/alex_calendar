@@ -8,7 +8,7 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(milliseconds: 1000), () {
-      AppRouter.navigatorKey.currentState?.pushReplacementNamed(AppRoutes.loginPage);
+      AppRouter.navigatorKey.currentState?.pushReplacementNamed(AppRoutes.login);
     });
     return const Scaffold(
       body: Center(

@@ -1,3 +1,4 @@
+import 'package:alex_calendar/src/ui/screens/add_toto_page/add_todo_page.dart';
 import 'package:alex_calendar/src/ui/screens/home_page/home_page.dart';
 import 'package:alex_calendar/src/ui/screens/splash_page/splash_page.dart';
 import 'package:alex_calendar/src/ui/screens/user_pages/forgot_password_page.dart';
@@ -11,18 +12,20 @@ class AppRouter {
   static final navigatorKey = GlobalKey<NavigatorState>();
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch(settings.name) {
-      case AppRoutes.loginPage:
+      case AppRoutes.login:
         return MaterialPageRoute(builder: (_) => LoginPage());
-      case AppRoutes.forgotPasswordPage:
+      case AppRoutes.forgotPassword:
         return MaterialPageRoute(builder: (_) => ForgotPasswordPage());
-      case AppRoutes.registryPage:
+      case AppRoutes.registry:
         return MaterialPageRoute(builder: (_) => RegistryPage());
-      case AppRoutes.splashPage:
+      case AppRoutes.splash:
         return MaterialPageRoute(builder: (_) => const SplashPage());
-      case AppRoutes.homePage:
+      case AppRoutes.home:
         return MaterialPageRoute(builder: (_) => const HomePage());
       case AppRoutes.signUp:
         return MaterialPageRoute(builder: (_) => SignUpPage());
+      case AppRoutes.addTodo:
+        return MaterialPageRoute(builder: (_) => AddTodoPage());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(
@@ -35,10 +38,11 @@ class AppRouter {
 }
 
 class AppRoutes {
-  static const String splashPage = '/';
-  static const String homePage = '/home_page';
+  static const String splash = '/';
+  static const String home = '/home';
   static const String signUp = '/sign_up';
-  static const String loginPage = '/login_page';
-  static const String registryPage = '/registry_page';
-  static const String forgotPasswordPage = '/forgotPasswordPage';
+  static const String login = '/login';
+  static const String registry = '/registry';
+  static const String forgotPassword = '/forgot_password';
+  static const String addTodo = '/add_todo';
 }

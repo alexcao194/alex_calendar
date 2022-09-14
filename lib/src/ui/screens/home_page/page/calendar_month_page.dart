@@ -24,6 +24,7 @@ class CalendarMonthPage extends StatelessWidget {
                 onPageChanged: (focusDate) {
                   BlocProvider.of<CalendarBloc>(context).add(CalendarEventChangeDate(currentDate: calendarState.currentDate, focusDate: focusDate));
                 },
+
                 calendarStyle: const CalendarStyle(canMarkersOverflow: true),
                 currentDay: calendarState.currentDate,
                 focusedDay: calendarState.focusDate,
