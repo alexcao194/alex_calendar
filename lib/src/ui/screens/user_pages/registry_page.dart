@@ -5,6 +5,7 @@ import 'package:alex_calendar/src/bloc/user_bloc/user_bloc.dart';
 import 'package:alex_calendar/src/constant/app_colors.dart';
 import 'package:alex_calendar/src/constant/app_strings.dart';
 import 'package:alex_calendar/src/constant/app_text_styles.dart';
+import 'package:alex_calendar/src/services/date_time_handle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:alex_core/alex_core.dart';
@@ -65,7 +66,7 @@ class RegistryPage extends StatelessWidget {
                                 },
                                 child: InputText(
                                     height: 50,
-                                    label:  simpleDateFormat(calendarState.currentDate),
+                                    label:  DateTimeHandle.simpleDateFormat(calendarState.currentDate),
                                     enable: false
                                 ),
                               ),
@@ -84,7 +85,7 @@ class RegistryPage extends StatelessWidget {
                                             UserEventRegistry(
                                                 displayName: displayNameController.value.text,
                                                 avatarURL: AppStrings.defaultAvatar,
-                                                birthday: simpleDateFormat(calendarState.currentDate),
+                                                birthday: DateTimeHandle.simpleDateFormat(calendarState.currentDate),
                                                 nickName: nickNameController.value.text
                                             )
                                         );
@@ -120,11 +121,6 @@ class RegistryPage extends StatelessWidget {
           );
         }
     );
-  }
-
-  simpleDateFormat(DateTime time) {
-    final localTime = time.toLocal();
-    return '${localTime.day}/${localTime.month}/${localTime.year}';
   }
 
 

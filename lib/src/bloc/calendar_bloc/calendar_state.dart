@@ -24,3 +24,7 @@ class CalendarStatePageChanged extends CalendarState {
 class CalendarStatePickBirthdayDone extends CalendarState {
   const CalendarStatePickBirthdayDone({required super.focusDate, required super.currentDate});
 }
+
+class CalendarStateChangedAddTodoDate extends CalendarState {
+  const CalendarStateChangedAddTodoDate({required super.focusDate, required super.currentDate});
+}

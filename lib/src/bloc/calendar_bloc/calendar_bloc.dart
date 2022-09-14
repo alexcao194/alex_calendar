@@ -17,6 +17,8 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
     on<CalendarEventChangePage>(_onChangPage);
     on<CalendarEventOnPickBirthday>(_onPickBirthday);
     on<CalendarEventOnPickDate>(_onPickDate);
+    on<CalendarEventOnChangeAddTodoDate>(_onChangeAddTodoDate);
+    on<CalendarEventOnPickTimeAddTodoPage>(_onChangeAddTodoTime);
   }
 
   FutureOr<void> _onChangDate(CalendarEventChangeDate event, Emitter<CalendarState> emit) {
@@ -49,5 +51,25 @@ class CalendarBloc extends Bloc<CalendarEvent, CalendarState> {
       DateTime pickedDate = DateTime(value!.year, value.month, value.day);
       emit(CalendarStateDateChanged(currentDate: pickedDate, focusDate: pickedDate));
     });
+  }
+
+  FutureOr<void> _onChangeAddTodoDate(event, Emitter<CalendarState> emit) async {
+    await showDatePicker(
+        context: AppRouter.navigatorKey.currentContext!,
+        initialDate: state.currentDate,
+        firstDate: Config.startDate,
+        lastDate: Config.endDate
+    ).then((value) {
+      DateTime pickedDate = DateTime(value!.year, value.month, value.day);
+      emit(CalendarStateChangedAddTodoDate(currentDate: pickedDate, focusDate: pickedDate));
+    });
+  }
+
+  FutureOr<void> _onChangeAddTodoTime(CalendarEventOnPickTimeAddTodoPage event, Emitter<CalendarState> emit) async {
+    await showTimePicker(
+        context: AppRouter.navigatorKey.currentContext!,
+        initialTime: TimeOfDay.now()
+    ).then((value) => null);
+    //TODO : hand time picker here
   }
 }

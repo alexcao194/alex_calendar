@@ -37,3 +37,19 @@ class CalendarEventOnPickDate extends CalendarEvent {
   @override
   List<Object> get props => [currentTime];
 }
+
+class CalendarEventOnChangeAddTodoDate extends CalendarEvent {
+  final DateTime currentTime;
+  const CalendarEventOnChangeAddTodoDate({required this.currentTime});
+
+  @override
+  List<Object> get props => [currentTime];
+}
+
+class CalendarEventOnPickTimeAddTodoPage extends CalendarEvent {
+  final DateTime currentTime;
+  const CalendarEventOnPickTimeAddTodoPage({required this.currentTime});
+
+  @override
+  List<Object> get props => [currentTime];
+}

@@ -17,4 +17,9 @@ class DateTimeHandle {
   static String toAppBarTitle(DateTime dateTime) {
     return '${convert[dateTime.month]}, ${dateTime.year}';
   }
+
+  static String simpleDateFormat(DateTime time) {
+    final localTime = time.toLocal();
+    return '${localTime.day}/${localTime.month}/${localTime.year}';
+  }
 }
